@@ -10,7 +10,7 @@ int main (void) {
     printf("Enter the day of the week on which the month begins (1=Mon, 7=Sun): ");
     scanf(" %d", &day0);
 
-    if (ndays < 28 || ndays > 31 || day0 < 1 || day0 > 8) {
+    if (ndays < 28 || ndays > 31 || day0 < 1 || day0 > 7) {
         printf("Input error, aborting.\n");
         return 1;
     }
