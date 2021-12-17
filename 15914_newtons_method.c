@@ -9,6 +9,7 @@ int main (void) {
     double y_prev = 100000;
     double tolerance = 0.00001;
     int i = 0;
+    int imax = 1000;
     bool keepgoing = true;
 
     double avg;
@@ -32,13 +33,18 @@ int main (void) {
 
         y = avg;
 
-        keepgoing = fabs(y - y_prev) >= tolerance * y;
-
         i += 1;
+
+        keepgoing = fabs(y - y_prev) >= tolerance * y && i < imax;
 
     } while (keepgoing);
 
     printf("\n");
+
+    if (i == imax) {
+        printf("Maximum number of iterations (%d) reached.\n", imax);
+    }
+
     printf("The square root of %.5f is approximately %.5f\n", x, y);
     printf("\n");
 
