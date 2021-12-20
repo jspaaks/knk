@@ -24,7 +24,7 @@ int main (void) {
             int iletter = c - 'A';
             points += values[iletter];
         } else {
-            printf("Unknown character %d encountered, aborting.\n", c);
+            printf("Unknown character %d ('%c') encountered, aborting.\n", c, c);
             return 1;
         }
 
