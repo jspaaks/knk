@@ -49,18 +49,27 @@ bool play_again (void) {
 
     printf("Play again? ([y] / n): ");
 
+    char c;
+    bool result;
+
     while (true) {
 
-        char c = getchar();
+        c = getchar();
 
         if (c == ' ') {
             continue;
         } else if (c == 'y' || c == 'Y' || c == '\n') {
-            return true;
+            result = true;
+            break;
         } else {
-            return false;
+            result = false;
+            break;
         }
     }
+    while (c != '\n') {
+        c = getchar();
+    }
+    return result;
 }
 
 
