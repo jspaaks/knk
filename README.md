@@ -4,7 +4,7 @@ Compile `*.c` files with:
 
 ```shell
 export BASENAME=<filename without '.c' extension>
-gcc -Wall -Wextra ${BASENAME}.c -o ${BASENAME}.bin
+gcc -Wall -Wextra -std=c99 ${BASENAME}.c -o ${BASENAME}.bin
 ```
 
 Then run the binary with: 
