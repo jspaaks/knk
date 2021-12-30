@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void calc_avg_sum(double a[], int n, double *avg, double *sum);
+void calc_avg_sum(const double a[], int n, double *avg, double *sum);
 
 
-void calc_avg_sum(double a[], int n, double *avg, double *sum) {
+void calc_avg_sum(const double a[], int n, double *avg, double *sum) {
 
     *sum = 0.0;
 
