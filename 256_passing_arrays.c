@@ -25,6 +25,7 @@ int main (void) {
     printf("main    : *p       = %d\n", *p);
     printf("main    : p[0]     = %d\n", p[0]);
     printf("main    : *(p + 0) = %d\n", *(p + 0));
+    printf("main    : &arr     = %p\n", &arr);
     printf("main    : arr      = %p\n", arr);
     printf("main    : &arr[0]  = %p\n", &arr[0]);
 
