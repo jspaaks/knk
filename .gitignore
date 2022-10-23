@@ -1,3 +1,5 @@
 # compiled files:
 *.bin
 
+# editor config files
+.vscode
