@@ -24,7 +24,7 @@ int main(void) {
 
 void max_min(int* first, int *last, int *max, int *min) {
     *max = *min = *first;
-    for (int *p = first; p < last; p++) {
+    for (int *p = first; p <= last; p++) {
         if (*p > *max) {
             *max = *p;
         } else if (*p < *min) {
