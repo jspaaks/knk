@@ -22,7 +22,7 @@ int main (void) {
                 break;
         case 3: printf("thirty");
                 break;
-        case 4: printf("fourty");
+        case 4: printf("forty");
                 break;
         case 5: printf("fifty");
                 break;
