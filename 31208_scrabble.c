@@ -42,8 +42,8 @@ int compute_scrabble_value(const char *word) {
 
 
 int main (void) {
-    char word[40];
-    char *p = &word[0];
+    char word[40] = "";
+    char *p = word;
     printf("Enter a word: ");
     while (true) {
         char c = (char)(getchar());
@@ -54,6 +54,6 @@ int main (void) {
         p++;
     }
     int points = compute_scrabble_value(word);
-    printf("Scrabble value: %d\n", points);
+    printf("Scrabble value of word '%s' is %d\n", word, points);
     return EXIT_SUCCESS;
 }
