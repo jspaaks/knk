@@ -3,3 +3,6 @@
 
 # editor config files
 .vscode
+
+# nano editor tmp files
+.*.swp
