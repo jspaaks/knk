@@ -18,6 +18,7 @@ bool are_anagrams(char *first, char *second) {
         counts[iletter] += 1;
         p++;
     }
+    int nchars0 = p - first;
 
     // subtract occurrence of letters in second word
     char *q = second;
@@ -25,6 +26,12 @@ bool are_anagrams(char *first, char *second) {
         int iletter = *q - 'a';
         counts[iletter] -= 1;
         q++;
+    }
+    int nchars1 = q - second;
+
+    if (nchars0 != nchars1) {
+        // unequal length, words can't be anagrams
+        return false;
     }
 
     // tally should be 0 for all elements in count for the words to be considered anagrams
@@ -57,24 +64,17 @@ int main (void) {
     printf("Enter the first word: ");
 
     char first[NCHARS] = "";
-    int nchars0 = read(first);
+    read(first);
 
     printf("Enter the second word: ");
 
     char second[NCHARS] = "";
-    int nchars1 = read(second);
+    read(second);
 
-    bool is_anagram;
-    if (nchars0 == nchars1) {
-        is_anagram = are_anagrams(first, second);
-    } else {
-        is_anagram = false;
-    }
+    const char *msg_yes = "The words are anagrams.\n";
+    const char *msg_no = "The words are not anagrams.\n";
 
-    if (is_anagram == true) {
-        printf("The words are anagrams.\n");
-    } else {
-        printf("The words are not anagrams.\n");
-    }
+    are_anagrams(first, second) ? printf("%s", msg_yes) : printf("%s", msg_no);
+
     return EXIT_SUCCESS;
 }
