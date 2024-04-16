@@ -3,7 +3,7 @@ OBJS := $(SRCS:%.c=%.o)
 DEPS := $(OBJS:%.o=%.d)
 FLGS := -Wall -Werror -Wextra -pedantic -MMD -MP
 CC   := gcc
-EXE  := reflow
+EXE  := reflow.bin
 
 .PHONY: all bin clean
 
