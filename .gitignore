@@ -6,3 +6,9 @@
 
 # nano editor tmp files
 .*.swp
+
+# generated files
+*.d
+*.o
+
+
