@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include "word.h"
 
 
 char simplify_whitespace(char c) {
@@ -24,21 +25,11 @@ int read_next_word (char word[], int n) {
         } else {
             if (i < n) {
                 word[i] = c;
-                i++;
             } else {
-                word[i] = '*';
+                word[n] = '*';
             }
+            i++;
         }
     }
-    return i;
-}
-
-
-void reset_word (char word[], int n) {
-    // clear the positions where letters are stored
-    for (int i = 0; i < n; i++) {
-        word[i] = '\0';
-    }
-    // clear the '*' position
-    word[n] = '\0';
+    return i > n ? n + 1 : i;
 }
