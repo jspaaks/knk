@@ -2,6 +2,8 @@
 
 Programming exercises for KN King's book _C programming - a modern approach_.
 
+## Pre 359
+
 Compile `*.c` files with:
 
 ```shell
@@ -15,7 +17,9 @@ Then run the binary with:
 ./${BASENAME}.bin
 ```
 
-Makefiles are introduced at 359, for later projects, do
+## Post 359
+
+Makefiles are introduced at 359, for subsequent projects, compile with:
 
 ```shell
 make
@@ -24,4 +28,10 @@ The above command should generate an executable file, e.g. `justify` which can t
 
 ```shell
 ./justify
+```
+
+Clean up the tree with:
+
+```shell
+make clean
 ```
