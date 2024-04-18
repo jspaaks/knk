@@ -14,3 +14,14 @@ Then run the binary with:
 ```shell
 ./${BASENAME}.bin
 ```
+
+Makefiles are introduced at 359, for later projects, do
+
+```shell
+make
+```
+The above command should generate an executable file, e.g. `justify` which can then be run as follows:
+
+```shell
+./justify
+```
