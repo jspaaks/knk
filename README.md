@@ -24,7 +24,7 @@ Makefiles are introduced at 359. Compile subsequent projects with:
 ```shell
 make
 ```
-The above command should generate an executable file, e.g. `justify` which can then be run as follows:
+The above command should generate an executable file, e.g. `justify`, which can then be run as follows:
 
 ```shell
 ./justify
