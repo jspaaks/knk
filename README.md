@@ -19,7 +19,7 @@ Then run the binary with:
 
 ## Post 359
 
-Makefiles are introduced at 359, for subsequent projects, compile with:
+Makefiles are introduced at 359. Compile subsequent projects with:
 
 ```shell
 make
