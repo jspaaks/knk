@@ -1,77 +1,8 @@
 #include <stdio.h>
+#include "fraction.h"
+#include "ops.h"
+
 #define NTESTS 3
-
-struct fraction {
-    int enumerator;
-    int denominator;
-};
-
-
-struct fraction add (struct fraction, struct fraction);
-struct fraction create(int enumerator, int denominator);
-struct fraction divide (struct fraction, struct fraction);
-int gcd (struct fraction);
-struct fraction multiply (struct fraction, struct fraction);
-struct fraction reduce (struct fraction);
-struct fraction subtract (struct fraction, struct fraction);
-
-
-struct fraction add (struct fraction f1, struct fraction f2) {
-    int y = f1.denominator * f2.denominator;
-    int x = f1.enumerator * f2.denominator + f1.denominator * f2.enumerator;
-    struct fraction f = create(x, y);
-    return reduce(f);
-}
-
-
-struct fraction create(int enumerator, int denominator) {
-    struct fraction f = {.enumerator = enumerator, .denominator = denominator};
-    return f;
-}
-
-
-struct fraction divide (struct fraction f1, struct fraction f2) {
-    int x = f1.enumerator * f2.denominator;
-    int y = f1.denominator * f2.enumerator;
-    struct fraction f3 = create(x, y);
-    return reduce(f3);
-}
-
-
-int gcd (struct fraction f) {
-    // greatest common divisor, following explanation from p122 ex2
-    int m = f.enumerator;
-    int n = f.denominator;
-    int rem = 0;
-    while (n > 0) {
-        rem = m % n;
-        m = n;
-        n = rem;
-    }
-    return m;
-}
-
-
-struct fraction multiply (struct fraction f1, struct fraction f2) {
-    int x = f1.enumerator * f2.enumerator;
-    int y = f1.denominator * f2.denominator;
-    struct fraction f = create(x, y);
-    return reduce(f);
-}
-
-
-struct fraction reduce (struct fraction f) {
-    int x = gcd(f);
-    return create(f.enumerator / x, f.denominator / x);
-}
-
-
-struct fraction subtract (struct fraction f1, struct fraction f2) {
-    int y = f1.denominator * f2.denominator;
-    int x = f1.enumerator * f2.denominator - f1.denominator * f2.enumerator;
-    struct fraction f = create(x, y);
-    return reduce(f);
-}
 
 
 int main (void) {
