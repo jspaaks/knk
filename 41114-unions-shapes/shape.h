@@ -1,7 +1,5 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#define CIRCLE 0
-#define RECTANGLE 1
 
 
 struct point {
@@ -11,7 +9,7 @@ struct point {
 
 
 struct shape {
-    int kind;                /* RECTANGLE or CIRCLE */
+    enum {CIRCLE, RECTANGLE} kind;                /* RECTANGLE or CIRCLE */
     struct point center;
     union {
         struct {
