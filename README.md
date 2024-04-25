@@ -35,3 +35,7 @@ Clean up the tree with:
 ```shell
 make clean
 ```
+
+## Other
+
+- https://cdecl.org/ for decoding declarations
