@@ -10,11 +10,11 @@ typedef struct {
 } Part;
 
 
-int find_part (int *, Part (*)[], int);
-void insert (int *, Part (*)[], int);
-void search (int *, Part (*)[]);
-void update (int *, Part (*)[]);
-void print (int *, Part (*)[]);
+int find_part (const int *, Part (*)[], const int);
+void insert (int *, Part (*)[], const int);
+void search (const int *, Part (*)[]);
+void update (const int *, Part (*)[]);
+void print (const int *, Part (*)[]);
 
 
 #endif

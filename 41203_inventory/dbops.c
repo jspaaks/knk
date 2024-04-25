@@ -5,7 +5,7 @@
 #include "readline.h"
 
 
-int find_part (int * num_parts, Part (* inventory)[], int number) {
+int find_part (const int * num_parts, Part (* inventory)[], const int number) {
     for (int i = 0; i < *num_parts; i++) {
         if ((*inventory)[i].number == number) {
             return i;
@@ -15,7 +15,7 @@ int find_part (int * num_parts, Part (* inventory)[], int number) {
 }
 
 
-void insert (int * num_parts, Part (* inventory)[], int max_parts) {
+void insert (int * num_parts, Part (* inventory)[], const int max_parts) {
     printf("┃  Inserting...\n");
     if (*num_parts == max_parts) {
         printf("┗━ Database is full; Can't add any more parts.\n");
@@ -47,10 +47,15 @@ void insert (int * num_parts, Part (* inventory)[], int max_parts) {
 }
 
 
-void search (int * num_parts, Part (* inventory)[]) {
+void search (const int * num_parts, Part (* inventory)[]) {
     int i;
     int number;
     printf("┃  Searching...\n");
+    if (*num_parts == 0) {
+        printf("┗━ Database empty.\n");
+        return;
+    }
+
     printf("┃  Enter part number: ");
     scanf("%d", &number);
     i = find_part(num_parts, inventory, number);
@@ -64,8 +69,12 @@ void search (int * num_parts, Part (* inventory)[]) {
 }
 
 
-void update (int * num_parts, Part (* inventory)[]) {
+void update (const int * num_parts, Part (* inventory)[]) {
     printf("┃  Updating...\n");
+    if (*num_parts == 0) {
+        printf("┗━ Database empty.\n");
+        return;
+    }
     printf("┃  Enter part number: ");
     int number;
     scanf("%d", &number);
@@ -82,7 +91,7 @@ void update (int * num_parts, Part (* inventory)[]) {
 }
 
 
-void print (int * num_parts, Part (* inventory)[]) {
+void print (const int * num_parts, Part (* inventory)[]) {
     printf("┃  Printing...\n");
     if (*num_parts == 0) {
         printf("┗━ Database empty.\n");
