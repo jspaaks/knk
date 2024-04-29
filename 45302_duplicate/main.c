@@ -26,4 +26,6 @@ int main (void) {
     }
     printf("s1 = %s\n", s1);
     printf("s2 = %s\n", s2);
+    free(s2);
+    exit(EXIT_SUCCESS);
 }
