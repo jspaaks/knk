@@ -39,3 +39,25 @@ make clean
 ## Other
 
 - https://cdecl.org/ for decoding declarations
+
+
+`valgrind` can help detect memory errors:
+
+```shell
+$ valgrind ./program
+$ valgrind --leak-check=full --show-leak-kinds=all ./program
+```
+
+See https://valgrind.org/ for more information.
+
+`clang-format` formats *.c files (as well as other formats), is customizable, and can inherit
+from existing published style guide, e.g. Google, LLVM, etc. See
+https://clang.llvm.org/docs/ClangFormatStyleOptions.html. 
+
+```shell
+# print warnings, don't change files
+clang-format -Werror --dry-run main.c
+
+# change file in-place
+clang-format -i main.c
+```
