@@ -61,3 +61,9 @@ clang-format -Werror --dry-run main.c
 # change file in-place
 clang-format -i main.c
 ```
+
+Have `gcc` generate Assembler code
+
+```shell
+gcc -c -S main.c   # generates main.s
+```
