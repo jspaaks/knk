@@ -12,27 +12,9 @@ struct node * prepend (struct node * llist, int payload);
 void print_llist (struct node * p);
 
 struct node * delete_from_list (struct node * llist, int n) {
-    struct node * cur = llist;
-    struct node * prev = NULL;
-    while (cur != NULL && cur->payload != n) {
-        prev = cur;
-        cur = cur->next;
-    }
 
-    if (cur == NULL) {
-        // list was NULL or n not found
-        return llist;
-    }
-    if (prev == NULL) {
-        // list was not NULL and payload found at beginning of list
-        llist = llist->next;
-        free(cur);
-    } else {
-        // delete node at cur
-        prev->next = cur->next;
-        free(cur);
-    }
-    return llist;
+    // TODO
+
 }
 
 int main (void) {
