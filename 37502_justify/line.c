@@ -31,6 +31,8 @@ int space_remaining (void) {
 
 void write_line (void) {
 
+    // TODO
+
     int extra_spaces;
     int spaces_to_insert
     int i;
