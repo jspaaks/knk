@@ -46,7 +46,6 @@ void make_empty (void) {
         p = next;
     }
     contents = NULL;
-    //print("make_empty");
 }
 
 
@@ -68,7 +67,6 @@ int pop (void) {
     }
     int payload = curr->payload;
     free(curr);
-    //print("pop");
     return payload;
 }
 
@@ -84,7 +82,6 @@ bool push (int i) {
     // insert the new node at the end of the llist
     if (is_empty()) {
         contents = n;
-        //print("push");
         return true;
     }
     struct node * p = contents;
@@ -92,7 +89,6 @@ bool push (int i) {
         p = p->next;
     }
     p->next = n;
-    //print("push");
     return true;
 }
 
