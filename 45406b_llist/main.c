@@ -8,13 +8,42 @@ struct node {
 };
 
 struct node * delete_from_list (struct node *, int);
+void free_llist (struct node * p);
 struct node * prepend (struct node * llist, int payload);
 void print_llist (struct node * p);
 
 struct node * delete_from_list (struct node * llist, int n) {
 
-    // TODO
+    struct node * curr = llist;
 
+    if (llist == NULL) {
+        // list empty, return llist unchanged
+        return llist;
+    }
+
+    if (curr->payload == n) {
+        // remove node from the start of llist
+        llist = curr->next;
+        free(curr);
+        return llist;
+    }
+
+    while (curr->next != NULL && curr->next->payload != n) {
+        curr = curr->next;
+    }
+
+    if (curr->next == NULL) {
+        // no matches
+        return llist;
+    }
+
+    if (curr->next->payload == n) {
+        // remove node from the middle
+        struct node * tmp = curr->next;
+        curr->next = curr->next->next;
+        free(tmp);
+    }
+    return llist;
 }
 
 int main (void) {
@@ -24,8 +53,9 @@ int main (void) {
         llist = prepend(llist, i);
     }
     print_llist(llist);
-    llist = delete_from_list(llist, 2);
+    llist = delete_from_list(llist, 0);
     print_llist(llist);
+    free_llist(llist);
 }
 
 void print_llist (struct node * p) {
@@ -40,6 +70,14 @@ void print_llist (struct node * p) {
             printf("%p: { payload: %d, next: %p }\n", (void *) p, (*p).payload, (void *) (*p).next);
             p = (*p).next;
         }
+    }
+}
+
+void free_llist (struct node * p) {
+    while (p != NULL) {
+        struct node * tmp = p;
+        p = p->next;
+        free(tmp);
     }
 }
 
