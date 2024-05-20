@@ -88,3 +88,14 @@ Have `gcc` generate Assembler code
 ```shell
 gcc -c -S main.c   # generates main.s
 ```
+
+Printing the shared objects (shared libraries) required by each program or shared object specified on the command line:
+
+```shell
+ldd program
+```
+
+List the symbols from an object file:
+```shell
+nm main.o
+```
