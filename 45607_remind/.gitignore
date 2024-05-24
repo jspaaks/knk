@@ -1,0 +1,3 @@
+/remind
+/cachegrind.out.*
+/callgrind.out.*
