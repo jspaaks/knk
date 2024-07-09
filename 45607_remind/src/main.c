@@ -23,7 +23,11 @@ int main (void) {
         }
 
         fprintf(stderr, "Enter day and reminder: ");
-        scanf("%2d", &day);
+        int n = scanf("%2d", &day);
+        if (n != 1) {
+            fprintf(stdout, "Problem parsing the input. Here's what was entered so far:\n");
+            day = 0;
+        }
 
         if (day == 0) {
             break;
