@@ -29,7 +29,7 @@ int main (void) {
             break;
         }
 
-        sprintf(day_str, "%2d", day);
+        snprintf(day_str, 3 * sizeof(char), "%2d", day);
 
         read_line(msg_str, MSG_LEN);
 
