@@ -1,44 +1,40 @@
-#include <criterion/criterion.h>
-#include <criterion/redirect.h>
 #include "queue/queue.h"
 #include <assert.h>
-
+#include <criterion/criterion.h>
+#include <criterion/redirect.h>
 
 static size_t nmax = 0;
 static Queue * q = NULL;
 static char * name = "q1";
 
-
-static void setup(void) {
+static void setup (void) {
     nmax = 4;
     q = queue__create(nmax, name);
 }
 
-static void teardown(void) {
+static void teardown (void) {
     nmax = 0;
     q = NULL;
 }
 
-static void redirect_stdout(void) {
+static void redirect_stdout (void) {
     cr_redirect_stdout();
 }
 
-static void redirect_stderr(void) {
+static void redirect_stderr (void) {
     cr_redirect_stderr();
 }
 
-static void setup_with_redirect(void) {
+static void setup_with_redirect (void) {
     setup();
     redirect_stdout();
     redirect_stderr();
 }
 
-
 Test(queue__join, simple, .init = setup, .fini = teardown) {
     queue__join(q, (Item) 235);
     cr_assert(queue__get_length(q) == 1, "Expected queue to be of length 1.");
 }
-
 
 Test(queue__join, to_capacity, .init = setup, .fini = teardown) {
     queue__join(q, (Item) 100);
@@ -48,7 +44,6 @@ Test(queue__join, to_capacity, .init = setup, .fini = teardown) {
     cr_assert(queue__get_length(q) == 4, "Expected queue's length to be %ld", nmax);
     cr_assert(queue__get_length(q) == queue__get_capacity(q), "Expected queue to be at capacity");
 }
-
 
 Test(queue__join, past_capacity, .init = setup_with_redirect, .fini = teardown) {
     queue__join(q, (Item) 100);

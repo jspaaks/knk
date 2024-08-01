@@ -1,8 +1,7 @@
 #include "queue/queue.h"
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
-
 
 int main (void) {
     fprintf(stdout, "Create queue named 'q1' of capacity 3.\n");
@@ -10,22 +9,21 @@ int main (void) {
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Create queue anmed 'q2' of capacity 10.\n");
     Queue * q2 = queue__create(10, "q2");
     queue__print_state(q2);
     fprintf(stdout, "\n");
 
-    // --- 
-
+    // ---
 
     fprintf(stdout, "Add 100 to q1\n");
     queue__join(q1, (Item) 100);
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Pop the first item off q1.\n");
     Item popped = -99;
@@ -38,7 +36,7 @@ int main (void) {
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     for (int i = 101; i < 104; i++) {
         fprintf(stdout, "Item %3d joins q1\n", i);
@@ -47,7 +45,7 @@ int main (void) {
         fprintf(stdout, "\n");
     }
 
-    // --- 
+    // ---
 
     if (queue__isfull(q1)) {
         fprintf(stdout, "q1 is now full\n");
@@ -55,7 +53,7 @@ int main (void) {
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     for (int i = 200; i < 209; i++) {
         fprintf(stdout, "Item %d joins q2\n", i);
@@ -64,7 +62,7 @@ int main (void) {
         fprintf(stdout, "\n");
     }
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Popping 3 items off q2\n");
     popped = -99;
@@ -75,7 +73,7 @@ int main (void) {
         fprintf(stdout, "\n");
     }
 
-    // --- 
+    // ---
 
     for (int i = 209; i < 213; i++) {
         fprintf(stdout, "Item %d joins q2\n", i);
@@ -84,7 +82,7 @@ int main (void) {
         fprintf(stdout, "\n");
     }
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Popping the first item off q1\n");
     popped = -99;
@@ -93,7 +91,7 @@ int main (void) {
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Popping the first item off q1\n");
     popped = -99;
@@ -102,20 +100,20 @@ int main (void) {
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Item 104 joins q1\n");
     queue__join(q1, (Item) 104);
     queue__print_state(q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Time to put q1 out to pasture\n");
     queue__destroy(&q1);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Popping the first item off q2\n");
     popped = -99;
@@ -124,13 +122,12 @@ int main (void) {
     queue__print_state(q2);
     fprintf(stdout, "\n");
 
-    // --- 
+    // ---
 
     fprintf(stdout, "Time to put q2 out to pasture\n");
     queue__destroy(&q2);
 
-    // --- 
+    // ---
 
     exit(EXIT_SUCCESS);
-    
 }

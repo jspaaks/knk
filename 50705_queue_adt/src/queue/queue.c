@@ -1,6 +1,6 @@
 #include "queue/queue.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 constexpr size_t queue_name_length = 100;
@@ -14,8 +14,7 @@ struct queue {
     Item * elems;
 };
 
-
-Queue * queue__create(size_t nmax, char * name) {
+Queue * queue__create (size_t nmax, char * name) {
     Queue * q = malloc(sizeof(Queue));
     if (q == NULL) {
         fprintf(stderr, "Error allocating memory for new queue instance.\n");
@@ -34,14 +33,14 @@ Queue * queue__create(size_t nmax, char * name) {
     return q;
 }
 
-void queue__destroy(Queue ** queue) {
+void queue__destroy (Queue ** queue) {
     Queue ** tmp = queue;
     free((*queue)->elems);
     free(*queue);
     *tmp = NULL;
 }
 
-size_t queue__get_capacity(const Queue * queue) {
+size_t queue__get_capacity (const Queue * queue) {
     return queue->nmax;
 }
 
@@ -49,11 +48,11 @@ size_t queue__get_length (const Queue * queue) {
     return queue->nact;
 }
 
-bool queue__isfull(const Queue * queue) {
+bool queue__isfull (const Queue * queue) {
     return queue->nact == queue->nmax;
 }
 
-bool queue__isempty(const Queue * queue) {
+bool queue__isempty (const Queue * queue) {
     return queue->nact == 0;
 }
 
@@ -82,14 +81,14 @@ bool queue__pop (Queue * queue, Item * popped) {
     return false;
 }
 
-void queue__print_state(Queue * queue) {
+void queue__print_state (Queue * queue) {
     if (queue->nmax == 0) {
         fprintf(stdout, " -- Queue labeled '%s': []", queue->name);
         return;
     }
     fprintf(stdout, " -- Queue labeled '%s': [", queue->name);
     size_t ih = queue->ihead;
-    size_t it = queue->itail; 
+    size_t it = queue->itail;
     bool iswrapped = queue->nact > 0 && it <= ih;
     for (size_t i = 0; i < queue->nmax; i++) {
         if (iswrapped) {

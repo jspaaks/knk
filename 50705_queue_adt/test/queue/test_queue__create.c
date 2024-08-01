@@ -1,8 +1,7 @@
-#include <criterion/criterion.h>
 #include "queue/queue.h"
 #include <assert.h>
+#include <criterion/criterion.h>
 #include <stdio.h>
-
 
 static size_t nmax1 = 0;
 static size_t nmax2 = 0;
@@ -11,15 +10,14 @@ static Queue * q2 = NULL;
 static char * name1 = "q1";
 static char * name2 = "q2";
 
-
-static void setup(void) {
+static void setup (void) {
     nmax1 = 4;
     nmax2 = 5;
     q1 = queue__create(nmax1, name1);
     q2 = queue__create(nmax2, name2);
 }
 
-static void teardown(void) {
+static void teardown (void) {
     nmax1 = 0;
     nmax2 = 0;
     q1 = NULL;
