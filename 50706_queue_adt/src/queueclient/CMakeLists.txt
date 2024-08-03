@@ -9,7 +9,7 @@ endif()
 
 add_executable(tgt_exe)
 
-set_property(TARGET tgt_exe PROPERTY OUTPUT_NAME program)
+set_property(TARGET tgt_exe PROPERTY OUTPUT_NAME queueclient)
 
 target_compile_definitions(
     tgt_exe
@@ -50,7 +50,7 @@ target_link_libraries(
 target_sources(
     tgt_exe
     PRIVATE
-        ${PROJECT_ROOT}/src/exe/main.c
+        ${PROJECT_ROOT}/src/queueclient/main.c
 )
 
 install(TARGETS tgt_exe)

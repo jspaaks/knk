@@ -12,6 +12,6 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set_property(CACHE CMAKE_INSTALL_PREFIX PROPERTY VALUE "${CMAKE_BINARY_DIR}/dist")
 endif()
 
-add_subdirectory(${PROJECT_ROOT}/src/exe)
+add_subdirectory(${PROJECT_ROOT}/src/queueclient)
 add_subdirectory(${PROJECT_ROOT}/src/queue)
 add_subdirectory(${PROJECT_ROOT}/test/queue)
