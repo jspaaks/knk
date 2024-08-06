@@ -29,14 +29,13 @@ Queue * queue__create (char * name) {
 }
 
 void queue__destroy (Queue ** queue) {
-    Queue ** tmp = queue;
     Item ignored;
     size_t nact = (*queue)->nact;
     for (size_t i = 0; i < nact; i++) {
         queue__pop(*queue, &ignored);
     }
-    free(*tmp);
-    *tmp = NULL;
+    free(*queue);
+    *queue = NULL;
 }
 
 size_t queue__get_length (const Queue * queue) {

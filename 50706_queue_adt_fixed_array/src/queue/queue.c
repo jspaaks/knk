@@ -34,10 +34,9 @@ Queue * queue__create (size_t nmax, char * name) {
 }
 
 void queue__destroy (Queue ** queue) {
-    Queue ** tmp = queue;
     free((*queue)->elems);
     free(*queue);
-    *tmp = NULL;
+    *queue = NULL;
 }
 
 size_t queue__get_capacity (const Queue * queue) {
