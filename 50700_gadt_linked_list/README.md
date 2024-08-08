@@ -74,4 +74,4 @@ clang-format -i `find ./src -type f -name '*.[c|h]'`
 
 ## Acknowledgements
 
-_This project was generated using [Copier](https://pypi.org/project/copier) and [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-template)._
+_This project was generated using [Copier](https://pypi.org/project/copier) and [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-projects)._
