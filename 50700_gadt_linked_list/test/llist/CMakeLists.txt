@@ -50,7 +50,13 @@ target_link_libraries(
 target_sources(
     tgt_exe_test_llist
     PRIVATE
-        ${PROJECT_ROOT}/test/llist/test_llist.c
+        ${PROJECT_ROOT}/test/llist/test_llist__append.c
+        ${PROJECT_ROOT}/test/llist/test_llist__create.c
+        ${PROJECT_ROOT}/test/llist/test_llist__delete.c
+        ${PROJECT_ROOT}/test/llist/test_llist__destroy.c
+        ${PROJECT_ROOT}/test/llist/test_llist__get_length.c
+        ${PROJECT_ROOT}/test/llist/test_llist__insert.c
+        ${PROJECT_ROOT}/test/llist/test_llist__prepend.c
 )
 
 install(TARGETS tgt_exe_test_llist)
