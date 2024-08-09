@@ -17,6 +17,6 @@ void llist__destroy (LinkedList **);
 void llist__insert (LinkedList *, size_t, void *);
 size_t llist__get_length (LinkedList *);
 void llist__prepend(LinkedList *, void *);
-void llist__print(FILE *, LinkedList *, llist__Printers);
+void llist__print(FILE *, LinkedList *, llist__Printers *);
 
 #endif
