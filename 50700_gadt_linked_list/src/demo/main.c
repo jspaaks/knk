@@ -28,6 +28,11 @@ static void printer_post(FILE * sink, size_t) {
     fprintf(sink, "}\n");
 }
 
+static bool filter(void * p) {
+    int elem = *((int *) p);
+    return elem == 101;
+}
+
 int main (void) {
 
     int arr1[] = { 100, 101, 102, 103 };
@@ -52,6 +57,9 @@ int main (void) {
     llist__print(stdout, lst1, printers1);
   
     llist__insert(lst1, 1, (void *) &arr1[1]);
+    llist__print(stdout, lst1, printers1);
+
+    llist__delete(lst1, filter, false);
     llist__print(stdout, lst1, printers1);
 
     // ---------------------------------------------------------- //

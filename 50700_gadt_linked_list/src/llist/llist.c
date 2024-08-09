@@ -27,8 +27,35 @@ LinkedList * llist__create(void) {
     return lst;
 }
 
+void llist__delete(LinkedList * lst, bool (*filter)(void *), bool global) {
+    Node * prev = NULL;
+    Node * curr = lst->firstnode;
+    while (curr != NULL) {
+        bool cond = filter(curr->payload);
+        if (cond && prev == NULL) {
+            // item is first item
+            lst->firstnode = curr->next;
+            Node * tmp = curr;
+            prev = NULL;
+            curr = curr->next;
+            lst->nelems--;
+            free(tmp);
+        } else if (cond) {
+            // item is not first
+            Node * tmp = curr;
+            prev->next = curr->next;
+            curr = curr->next;
+            lst->nelems--;
+            free(tmp);
+        } else {
+            prev = curr;
+            curr = curr->next;
+        }
+        if (cond && !global) return;
+    }
+}
+
 void llist__destroy(LinkedList ** lst) {
-    // TODO consider adding a user-supplied itemdestroyer function argument
     Node * curr = (*lst)->firstnode;
     while (curr != NULL) {
         struct node * tmp = curr;
@@ -93,7 +120,11 @@ void llist__print(FILE * sink, LinkedList * lst, llist__Printers printers) {
     Node * curr = lst->firstnode;
     size_t i = 0;
     while (curr != NULL) {
-        printers.elem(sink, i, lst->nelems, curr->payload);
+        if (printers.elem == NULL) {
+            fprintf(sink, "%p%s", curr->payload, curr->next == NULL ? "" : ", ");
+        } else {
+            printers.elem(sink, i, lst->nelems, curr->payload);
+        }
         curr = curr->next;
         i++;
     }

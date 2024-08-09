@@ -12,6 +12,7 @@ typedef struct printers {
 
 void llist__append(LinkedList *, void *);
 LinkedList * llist__create (void);
+void llist__delete(LinkedList *, bool (*)(void *), bool);
 void llist__destroy (LinkedList **);
 void llist__insert (LinkedList *, size_t, void *);
 size_t llist__get_length (LinkedList *);
