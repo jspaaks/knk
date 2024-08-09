@@ -107,32 +107,32 @@ size_t llist__get_length (LinkedList * lst) {
     return lst->nelems;
 }
 
-void llist__print(FILE * sink, LinkedList * lst, llist__Printers printers) {
+void llist__print(FILE * sink, LinkedList * lst, llist__Printers * printers) {
 
     // -- print preamble
-    if (printers.pre == NULL) {
+    if (printers == NULL || printers->pre == NULL) {
         fprintf(sink, "[");
     } else {
-        printers.pre(sink, lst->nelems);
+        printers->pre(sink, lst->nelems);
     }
 
     // -- print each elem
     Node * curr = lst->firstnode;
     size_t i = 0;
     while (curr != NULL) {
-        if (printers.elem == NULL) {
+        if (printers == NULL || printers->elem == NULL) {
             fprintf(sink, "%p%s", curr->payload, curr->next == NULL ? "" : ", ");
         } else {
-            printers.elem(sink, i, lst->nelems, curr->payload);
+            printers->elem(sink, i, lst->nelems, curr->payload);
         }
         curr = curr->next;
         i++;
     }
 
     // -- print postamble
-    if (printers.post == NULL) {
+    if (printers == NULL || printers->post == NULL) {
         fprintf(sink, "]\n");
     } else {
-        printers.post(sink, lst->nelems);
+        printers->post(sink, lst->nelems);
     }
 }
