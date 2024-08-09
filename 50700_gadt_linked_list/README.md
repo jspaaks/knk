@@ -1,6 +1,6 @@
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-orange.json)](https://github.com/copier-org/copier)
 
-# 5050700_gadt_llist
+# 50700_gadt_llist
 
 ## CMake
 
@@ -15,10 +15,10 @@ cd build/cmake
 cmake ../..
 
 # build the project
-make
+cmake --build .
 
 # install the project to <repo>/build/cmake/dist
-make install
+cmake --install .
 
 # run the program to see if it works
 ./dist/bin/demo
@@ -27,19 +27,20 @@ make install
 Should output something like:
 
 ```text
--- test compile definitions
-   DEBUG compile definition has been defined.
-
--- test wether math library was linked
-   sqrt(144) = 12.000000
-
--- test c2x / c23 features
-   0 1 2 3 4
-
--- test own library
-   divide(2, 3) = 0
-   multiply(2, 3) = 6
-
+Creating an instance of LinkedList of int
+and adding some items to it:
+ -- LinkedList[0] = {}
+ -- LinkedList[1] = {102}
+ -- LinkedList[2] = {100, 102}
+ -- LinkedList[3] = {100, 102, 103}
+ -- LinkedList[4] = {100, 101, 102, 103}
+Creating an instance of LinkedList of float
+and adding some items to it:
+ -- []
+ -- [202.00]
+ -- [200.00, 202.00]
+ -- [200.00, 202.00, 203.00]
+ -- [200.00, 201.00, 202.00, 203.00]
 ```
 
 ## Testing
@@ -73,4 +74,4 @@ clang-format -i `find ./src -type f -name '*.[c|h]'`
 
 ## Acknowledgements
 
-_This project was generated using [Copier](https://pypi.org/project/copier)._
+_This project was generated using [Copier](https://pypi.org/project/copier) and [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-projects)._
