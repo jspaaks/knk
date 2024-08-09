@@ -27,20 +27,38 @@ cmake --install .
 Should output something like:
 
 ```text
-Creating an instance of LinkedList of int
-and adding some items to it:
- -- LinkedList[0] = {}
+ --- LinkedList library demonstrator ---
+Creating an instance of LinkedList containing ints:
+[]
+
+Add an item to the linked list:
+[0x7ffd14b81268]
+
+Let's use a custom printer to show what's in the LinkedList nodes:
  -- LinkedList[1] = {102}
+
+Continue inserting but keep using the custom print method:
  -- LinkedList[2] = {100, 102}
  -- LinkedList[3] = {100, 102, 103}
  -- LinkedList[4] = {100, 101, 102, 103}
-Creating an instance of LinkedList of float
-and adding some items to it:
+
+Deleting the first item greater than 100:
+ -- LinkedList[3] = {100, 102, 103}
+
+Deleting all items greater than 100:
+ -- LinkedList[1] = {100}
+
+
+In the same program, create an instance of LinkedList of float
+and add some items to it. Use a custom printer for displaying
+the payload of each node:
  -- []
  -- [202.00]
  -- [200.00, 202.00]
  -- [200.00, 202.00, 203.00]
  -- [200.00, 201.00, 202.00, 203.00]
+
+Done.
 ```
 
 ## Testing
