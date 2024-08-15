@@ -1,7 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
-#include "header1.h"
-#include "adding.h"
 
 int main (void) {
     fprintf(stdout, "-- test compile definitions\n");
@@ -10,12 +9,6 @@ int main (void) {
 #else
     fprintf(stdout, "   DEBUG compile definition has been defined.\n");
 #endif
-    fprintf(stdout, "\n");
-
-
-    fprintf(stdout, "-- test wether header library was included\n");
-    Custom a = 1;
-    fprintf(stdout, "   a = %d\n", (int) a);
     fprintf(stdout, "\n");
 
 
@@ -33,9 +26,5 @@ int main (void) {
     }
     fprintf(stdout, "\n");
 
-    fprintf(stdout, "-- test external library\n");
-    fprintf(stdout, "   add(2, 3) = %d\n", add(2, 3));
-    fprintf(stdout, "\n");
-
-    return 0;
+    return EXIT_SUCCESS;
 }
