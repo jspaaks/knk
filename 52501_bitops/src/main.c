@@ -1,7 +1,6 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <math.h>
 
 void a (void) {
     uint8_t i = 8; // b00001000
@@ -13,14 +12,12 @@ void a (void) {
     fprintf(stdout, " -- i >> (1 + j) >> 1: %d\n", i >> (1 + j) >> 1);
 }
 
-
 void b (void) {
     uint8_t i = 1; // b00000001
     fprintf(stdout, "b\n");
     fprintf(stdout, " -- i = %d;\n", i);
     fprintf(stdout, " -- i & ~i: %d\n", i & ~i);
 }
-
 
 void c (void) {
     uint8_t i = 2; // b00000010
@@ -45,7 +42,6 @@ void d (void) {
     fprintf(stdout, " -- i ^ j & k: %d\n", i ^ j & k);
     fprintf(stdout, " -- i ^ (j & k): %d\n", i ^ (j & k));
 }
-
 
 int main (void) {
     a();
