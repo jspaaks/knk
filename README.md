@@ -36,6 +36,19 @@ Clean up the tree with:
 make clean
 ```
 
+## Post 45607
+
+CMakeLists.txt files are introduced at 45607. Complile subsequent projects with:
+
+```shell
+mkdir build
+cd build
+cmake --build .
+cmake --install .
+# run the resulting program with:
+./dist/bin/program
+```
+
 ## Formatting with `clang-format`
 
 `clang-format` formats *.c files (as well as other formats), is customizable, and can inherit
