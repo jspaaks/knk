@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 unsigned int slice (unsigned int i, int from, int width) {
     int shift = from + 1 - width;
