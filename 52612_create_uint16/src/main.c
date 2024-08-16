@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 uint16_t create_uint16 (uint8_t hi, uint8_t lo) {
-    return lo | ((uint16_t) hi) << 8;
+    return (hi << 8) + lo;
 }
 
 int main (void) {
