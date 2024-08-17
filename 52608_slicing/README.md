@@ -9,7 +9,7 @@ cmake --install .
 ./dist/bin/program
 ```
 
-hould output something like:
+should output something like:
 
 ```text
 slice(i=65535, from=15, width=4): 15
