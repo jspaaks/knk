@@ -1,3 +1,4 @@
+# template
 
 ```shell
 mkdir build
@@ -6,4 +7,10 @@ cmake ..
 cmake --build .
 cmake --install .
 ./dist/bin/program
+```
+
+Should output something like:
+
+```text
+...
 ```
