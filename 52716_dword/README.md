@@ -1,3 +1,4 @@
+# 52716_dword
 
 ```shell
 mkdir build
@@ -8,7 +9,7 @@ cmake --install .
 ./dist/bin/program
 ```
 
-should output somehting like:
+should output something like:
 
 ```text
 Different views on the same bits through type unions:
