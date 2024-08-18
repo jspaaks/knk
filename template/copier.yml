@@ -1,0 +1,6 @@
+_subdirectory: template
+
+project:
+    type: str
+    help: What is the name of the new project? (Use [A-Za-z0-9_-.]+)
+

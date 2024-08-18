@@ -1,9 +1,11 @@
+# copier template
 
 ```shell
-mkdir build
-cd build
-cmake ..
-cmake --build .
-cmake --install .
-./dist/bin/program
+pipx install copier
+```
+
+then
+
+```shell
+copier copy <this directory> .
 ```
