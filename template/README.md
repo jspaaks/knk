@@ -9,3 +9,9 @@ then
 ```shell
 copier copy <this directory> .
 ```
+
+Should output something like:
+
+```text
+...
+```
