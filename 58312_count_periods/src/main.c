@@ -19,6 +19,7 @@ int main (int argc, char * argv[]) {
     if (argc != 2) {
         fprintf(stderr, "Usage: count-periods FILENAME\n");
         fprintf(stderr, "Return the number of periods in a given string\n");
+        exit(EXIT_FAILURE);
     }
 
     int n = count_periods(argv[1]);
