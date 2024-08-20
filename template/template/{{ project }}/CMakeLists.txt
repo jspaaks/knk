@@ -10,20 +10,22 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set_property(CACHE CMAKE_INSTALL_PREFIX PROPERTY VALUE "${CMAKE_BINARY_DIR}/dist")
 endif()
 
-add_executable(program)
+add_executable(tgt)
+
+set_target_properties(tgt PROPERTIES OUTPUT_NAME "program")
 
 target_compile_definitions(
-    program
+    tgt
     PRIVATE
         $<$<CONFIG:Debug>:DEBUG>
 )
 target_compile_features(
-    program
+    tgt
     PRIVATE
         c_std_23
 )
 target_compile_options(
-    program
+    tgt
     PRIVATE
         -Wall
         -Wextra
@@ -33,14 +35,14 @@ target_compile_options(
         $<$<CONFIG:Release>:-Werror>
 )
 target_link_libraries(
-    program
+    tgt
     PRIVATE
         m
 )
 target_sources(
-    program
+    tgt
     PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/src/main.c
 )
 
-install(TARGETS program)
+install(TARGETS tgt)
