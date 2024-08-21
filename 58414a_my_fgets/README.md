@@ -12,17 +12,17 @@ echo -e "0123456789\nmore text\nthat should be ignored" > input.txt
 Should output something like:
 
 ```text
-$ ./dist/bin/my_fgets_demo 0 <input.txt                                                                                                                                                                                                                                      
+$ ./dist/bin/my_fgets_demo 0 <input.txt
 Can't use zero-capacity buffer. Aborting.
 ```
 
 ```text
-$ ./dist/bin/my_fgets_demo 1 <input.txt                                                                                                                                                                                                                                                                     
+$ ./dist/bin/my_fgets_demo 1 <input.txt
 Need space to terminate buffered string with \0. Aborting.
 ```
 
 ```text
-$ ./dist/bin/my_fgets_demo 2 <input.txt                                                                                                                                                                                                                                                                     
+$ ./dist/bin/my_fgets_demo 2 <input.txt
 Bufsize 2 requested.
 0           # no newline
 ```
