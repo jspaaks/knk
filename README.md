@@ -38,7 +38,7 @@ make clean
 
 ## Post 45607
 
-CMakeLists.txt files are introduced at 45607. Complile subsequent projects with:
+`CMakeLists.txt` files are introduced at 45607. Compile subsequent projects with:
 
 ```shell
 mkdir build
