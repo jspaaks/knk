@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int main (void) {
+int main (int argc, char * argv[]) {
     fprintf(stdout, "-- test compile definitions\n");
 #ifndef DEBUG
     fprintf(stdout, "   DEBUG compile definition has not been defined.\n");
