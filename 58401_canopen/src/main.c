@@ -1,0 +1,50 @@
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main (int argc, char * argv[]) {
+    if (argc == 1) {
+        fprintf(stderr, "Usage: %s FILENAME1 [FILENAME2] [...]\n", argv[0]);
+        fprintf(stderr, "Test whether the files indicated by FILENAME1,\nFILENAME2, ... can be opened or not.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (argc == 2 && strncmp(argv[1], "er", 2) == 0) {
+        fprintf(stdout, "canopen er? I barely know her!\n");
+        exit(EXIT_SUCCESS);
+    }
+
+    unsigned int longest = 0;
+    unsigned int nnames = argc - 1;
+    for (unsigned int iname = 0; iname < nnames; ++iname) {
+        unsigned int ell = strlen(argv[iname + 1]);
+        longest = ell > longest ? ell : longest;
+    }
+    longest += 5;
+
+    char * dots = malloc(longest * 1 + 5 + 1);
+    char * spaces = malloc(longest * 1 + 5 + 1);
+    for (size_t i = 0; i < longest; ++i) {
+        dots[i] = '.';
+        spaces[i] = ' ';
+    }
+
+    fprintf(stdout, " %.*s | can be opened | cannot be opened | reason\n", (int) longest, spaces);
+    FILE * fp;
+    for (unsigned int iname = 0; iname < nnames; ++iname) {
+        fp = fopen(argv[iname + 1], "r");
+        char * filename = argv[iname + 1];
+        if (fp == NULL) {
+            fprintf(stdout, "%s %.*s | ............. | ...... \u2713 ....... | %s\n", filename,
+                    (int) (longest - strlen(filename)), dots, strerror(errno));
+            errno = 0;
+        } else {
+            fprintf(stdout, "%s %.*s | ..... \u2713 ..... | ................ |\n", filename,
+                    (int) (longest - strlen(filename)), dots);
+        }
+    }
+    free(dots);
+    free(spaces);
+    return EXIT_SUCCESS;
+}
