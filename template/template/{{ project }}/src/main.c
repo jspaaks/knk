@@ -3,6 +3,12 @@
 #include <math.h>
 
 int main (int argc, char * argv[]) {
+
+    if (argc != 1) {
+        fprintf(stderr, "Usage: %s\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
     fprintf(stdout, "-- test compile definitions\n");
 #ifndef DEBUG
     fprintf(stdout, "   DEBUG compile definition has not been defined.\n");
@@ -28,3 +34,4 @@ int main (int argc, char * argv[]) {
 
     return EXIT_SUCCESS;
 }
+
