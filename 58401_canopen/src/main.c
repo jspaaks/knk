@@ -30,6 +30,7 @@ int main (int argc, char * argv[]) {
         spaces[i] = ' ';
     }
 
+    bool complete_success = true;
     fprintf(stdout, " %.*s | can be opened | cannot be opened | reason\n", (int) longest, spaces);
     FILE * fp;
     for (unsigned int iname = 0; iname < nnames; ++iname) {
@@ -39,6 +40,7 @@ int main (int argc, char * argv[]) {
             fprintf(stdout, "%s %.*s | ............. | ...... \u2713 ....... | %s\n", filename,
                     (int) (longest - strlen(filename)), dots, strerror(errno));
             errno = 0;
+            complete_success = false;
         } else {
             fprintf(stdout, "%s %.*s | ..... \u2713 ..... | ................ |\n", filename,
                     (int) (longest - strlen(filename)), dots);
@@ -46,5 +48,5 @@ int main (int argc, char * argv[]) {
     }
     free(dots);
     free(spaces);
-    return EXIT_SUCCESS;
+    return complete_success ? EXIT_SUCCESS : EXIT_FAILURE;
 }
