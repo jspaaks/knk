@@ -1,6 +1,8 @@
 _subdirectory: template
 
-project:
+directory:
     type: str
-    help: What is the name of the new project? (Use [A-Za-z0-9_-.]+)
-
+    help: What is the directory name of the new project? (Use [A-Za-z0-9_-.]+)
+executable:
+    type: str
+    help: What is the name of the executable? (Use [A-Za-z0-9_-.]+)
