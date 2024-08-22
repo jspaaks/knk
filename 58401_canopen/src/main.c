@@ -34,16 +34,20 @@ int main (int argc, char * argv[]) {
     fprintf(stdout, " %.*s | can be opened | cannot be opened | reason\n", (int) longest, spaces);
     FILE * fp;
     for (unsigned int iname = 0; iname < nnames; ++iname) {
-        fp = fopen(argv[iname + 1], "r");
         char * filename = argv[iname + 1];
+        fp = fopen(filename, "r");
         if (fp == NULL) {
             fprintf(stdout, "%s %.*s | ............. | ...... \u2713 ....... | %s\n", filename,
                     (int) (longest - strlen(filename)), dots, strerror(errno));
             errno = 0;
             complete_success = false;
-        } else {
-            fprintf(stdout, "%s %.*s | ..... \u2713 ..... | ................ |\n", filename,
-                    (int) (longest - strlen(filename)), dots);
+            continue;
+        }
+        fprintf(stdout, "%s %.*s | ..... \u2713 ..... | ................ |\n", filename,
+                (int) (longest - strlen(filename)), dots);
+        int status = fclose(fp);
+        if (status != 0) {
+            fprintf(stderr, "Error closing file '%s': %s.\n", filename, strerror(errno));
         }
     }
     free(dots);
