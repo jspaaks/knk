@@ -134,3 +134,4 @@ static void print_usage (void) {
     fprintf(stderr, "   count [ -c | --characters ] FILENAME\n");
     fprintf(stderr, "Count the number of words, lines, or characters in file FILENAME, respectively.\n");
 }
+
