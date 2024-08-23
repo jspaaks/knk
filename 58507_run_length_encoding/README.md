@@ -1,4 +1,4 @@
-# 58507a_run_length_encoding
+# 58507_run_length_encoding
 
 ## Build and install
 
