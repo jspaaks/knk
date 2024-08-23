@@ -31,10 +31,13 @@ int main (int argc, char * argv[]) {
     bool keep_going = true;
     int nrows = 0;
     int ncols = 10;
-    fprintf(stdout, "Offset              Bytes              Characters\n");
-    fprintf(stdout, "------  -----------------------------  ----------\n");
+    fprintf(stdout, "         ");
+    for (int icol = 0; icol < ncols; ++icol) {
+        fprintf(stdout, "  %1d", icol);
+    }
+    fprintf(stdout, "\n");
     while (keep_going) {
-        fprintf(stdout, "%6d ", nrows * ncols);
+        fprintf(stdout, "%7dx ", nrows);
         for (int icol = 0; icol < ncols; ++icol) {
             int ch = fgetc(fp0);
             if (ch == EOF && ferror(fp0)) {
@@ -48,7 +51,11 @@ int main (int argc, char * argv[]) {
                 }
                 break;
             }
-            fprintf(stdout, " %02hx", ch);
+            if (isprint(ch)) {
+                fprintf(stdout, " \033[1;92m%02hx\033[0m", (char) ch);
+            } else {
+                fprintf(stdout, " \033[1;93m%02hx\033[0m", (char) ch);
+            }
         }
         fprintf(stdout, "  ");
         for (int icol = 0; icol < ncols; ++icol) {
@@ -63,9 +70,9 @@ int main (int argc, char * argv[]) {
                 break;
             }
             if (isprint(ch)) {
-                fprintf(stdout, "%1c", (char) ch);
+                fprintf(stdout, "\033[1;92m%1c\033[0m", (char) ch);
             } else {
-                fprintf(stdout, "%1c", '.');
+                fprintf(stdout, "\033[1;93m%1c\033[0m", '.');
             }
         }
         fprintf(stdout, "\n");
