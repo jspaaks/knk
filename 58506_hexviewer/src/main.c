@@ -28,17 +28,14 @@ int main (int argc, char * argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    int nread = 0;
-    int ncols = 10 * 2;
+    bool keep_going = true;
+    int nrows = 0;
+    int ncols = 10;
     fprintf(stdout, "Offset              Bytes              Characters\n");
     fprintf(stdout, "------  -----------------------------  ----------\n");
-    while (true) {
-        if (nread % ncols == 0) {
-            fprintf(stdout, "%6d ", nread / 2);
-        }
-
-        // ------------------
-        if ((nread % ncols) < (ncols / 2)) {
+    while (keep_going) {
+        fprintf(stdout, "%6d ", nrows * ncols);
+        for (int icol = 0; icol < ncols; ++icol) {
             int ch = fgetc(fp0);
             if (ch == EOF && ferror(fp0)) {
                 fprintf(stderr, "Error getting character from file '%s': %s.\n", filename, strerror(errno));
@@ -46,14 +43,15 @@ int main (int argc, char * argv[]) {
                 exit(EXIT_FAILURE);
             }
             if (ch == EOF && feof(fp0)) {
+                for (int i = icol; i < ncols; i++) {
+                    fprintf(stdout, "   ");
+                }
                 break;
             }
             fprintf(stdout, " %02hx", ch);
-            nread++;
-            if ((nread % ncols) == (ncols / 2)) {
-                fprintf(stdout, "  ");
-            }
-        } else {
+        }
+        fprintf(stdout, "  ");
+        for (int icol = 0; icol < ncols; ++icol) {
             int ch = fgetc(fp1);
             if (ch == EOF && ferror(fp1)) {
                 fprintf(stderr, "Error getting character from file '%s': %s.\n", filename, strerror(errno));
@@ -61,6 +59,7 @@ int main (int argc, char * argv[]) {
                 exit(EXIT_FAILURE);
             }
             if (ch == EOF && feof(fp1)) {
+                keep_going = false;
                 break;
             }
             if (isprint(ch)) {
@@ -68,16 +67,10 @@ int main (int argc, char * argv[]) {
             } else {
                 fprintf(stdout, "%1c", '.');
             }
-            nread++;
         }
-
-        // ------------------
-
-        if (nread % ncols == 0) {
-            fprintf(stdout, "\n");
-        }
+        fprintf(stdout, "\n");
+        nrows++;
     }
-    fprintf(stdout, "\n");
 
     int status0 = fclose(fp0);
     if (status0 == EOF) {
