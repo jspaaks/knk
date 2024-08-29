@@ -43,7 +43,7 @@ void close_files (Files * files) {
 }
 
 void encypher (Files * files, int8_t shift) {
-    fprintf(stdout, " -- Encrypting...\n");
+    fprintf(stdout, " -- Encrypting with key '%hhd'...\n", shift);
     while (true) {
         int ch = fgetc(files->read.fp);
         int ch_enc;
@@ -108,6 +108,10 @@ int8_t prompt_shift (void) {
     if (nread != 1) {
         fprintf(stderr, " -- Error getting data from STDIN.\n");
         errno = 0;
+        exit(EXIT_FAILURE);
+    }
+    if (shift < 1 || shift > 25) {
+        fprintf(stderr, " -- Requested shift amount (%hhd) is out of bounds.\n", shift);
         exit(EXIT_FAILURE);
     }
     return shift;
