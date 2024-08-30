@@ -1,5 +1,6 @@
 #include "line.h"
 #include "word.h"
+#include <stdlib.h>
 
 bool line__append (Line * line, Word * word, unsigned int ncols) {
     bool fits = line->nchars + line->nspans + word->cap <= ncols;
@@ -23,18 +24,23 @@ void line__free_and_reset (Line * line) {
 }
 
 void line__print (Line * line, FILE * fp, unsigned int ncols) {
+
     unsigned int spanwidth = (ncols - line->nchars) / line->nspans; // integer division
     unsigned int nremaining = ncols - line->nchars - line->nspans * spanwidth;
-    for (unsigned int i = 0; i < line->nwords; ++i) {
+    float r;
+    float chance;
+    unsigned int i = 0;
+    for (; i < line->nspans; ++i) {
         fprintf(fp, "%s", line->words[i]->buf);
         for (unsigned int j = 0; j < spanwidth; ++j) {
-            if (i < line->nwords - 1) {
-                fprintf(fp, "%c",  ' ');
-            }
+            fprintf(fp, "%c",  ' ');
+        }
+        chance = ((float) nremaining) / (line->nspans - i);
+        r = ((float) rand()) / RAND_MAX;
+        if (r < chance) {
+            fprintf(fp, "%c", ' ');
+            nremaining--;
         }
     }
-    for (unsigned int i = 0; i < nremaining; ++i) {
-        fprintf(fp, "%c", '=');
-    }
-    fprintf(fp, "\n");
+    fprintf(fp, "%s\n", line->words[i]->buf);
 }

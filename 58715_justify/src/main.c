@@ -6,10 +6,13 @@
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
+#include <time.h>
 
 void justify (Files *, unsigned int);
 
 int main (int argc, char * argv[]) {
+
+    srand(time(nullptr));
 
     if (argc != 7) {
         fprintf(stderr,
