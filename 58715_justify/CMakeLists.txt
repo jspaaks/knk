@@ -43,6 +43,7 @@ target_sources(
     tgt
     PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}/src/files.c
+        ${CMAKE_CURRENT_LIST_DIR}/src/line.c
         ${CMAKE_CURRENT_LIST_DIR}/src/main.c
         ${CMAKE_CURRENT_LIST_DIR}/src/word.c
 )

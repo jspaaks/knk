@@ -10,12 +10,12 @@ static Word * word__create (size_t nbufcap);
 static Word * word__create (size_t nbufcap) {
     char * buf = malloc(sizeof(char) * nbufcap);
     if (buf == nullptr) {
-        fprintf(stderr, "Error allocating memory for word buffer.\n");
+        fprintf(stderr, " -- Error allocating memory for word buffer.\n");
         exit(EXIT_FAILURE);
     }
     Word * word = malloc(sizeof(Word) * 1);
     if (buf == nullptr) {
-        fprintf(stderr, "Error allocating memory for Word.\n");
+        fprintf(stderr, " -- Error allocating memory for Word.\n");
         exit(EXIT_FAILURE);
     }
     word->buf = buf;
@@ -42,7 +42,7 @@ Word * word__fread_into_buffer (FILE * fp, char * filename, bool * eof) {
             *eof = curr == EOF && feof(fp);
             errored = curr == EOF && ferror(fp);
             if (errored) {
-                fprintf(stderr, "Error reading data from file '%s': %s.\n", filename, strerror(errno));
+                fprintf(stderr, " -- Error reading data from file '%s': %s.\n", filename, strerror(errno));
                 errno = 0;
                 fclose(fp);
                 exit(EXIT_FAILURE);
@@ -62,27 +62,29 @@ Word * word__fread_into_buffer (FILE * fp, char * filename, bool * eof) {
     // -------------------------------------------------------------------------- //
     //  allocate a buffer of the exact size needed and fill it with data from fp
     // -------------------------------------------------------------------------- //
-    long cap = cursor1 - cursor0 + 1;
-    Word * word = word__create((size_t) cap);
-    long i = 0;
-    int ch;
-    bool errored;
-    for (; i < cap - 1; ++i) {
-        ch = fgetc(fp);
-        *eof = ch == EOF && feof(fp);
-        errored = ch == EOF && ferror(fp);
-        if (errored) {
-            fprintf(stderr, "Error reading data from file '%s': %s.\n", filename, strerror(errno));
-            errno = 0;
-            fclose(fp);
-            exit(EXIT_FAILURE);
+    Word * word = word__create((size_t) cursor1 - cursor0 + 1);
+    {
+        size_t i = 0;
+        int ch;
+        bool errored;
+        while (i < word->cap - 1) {
+            ch = fgetc(fp);
+            *eof = ch == EOF && feof(fp);
+            errored = ch == EOF && ferror(fp);
+            if (errored) {
+                fprintf(stderr, " -- Error reading data from file '%s': %s.\n", filename, strerror(errno));
+                errno = 0;
+                fclose(fp);
+                exit(EXIT_FAILURE);
+            }
+            if (*eof) {
+                break;
+            }
+            word->buf[i] = ch;
+            i++;
         }
-        if (*eof) {
-            break;
-        }
-        word->buf[i] = ch;
+        word->buf[i] = '\0';
     }
-    word->buf[i] = '\0';
     return word;
 }
 
