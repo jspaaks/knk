@@ -2,7 +2,7 @@
 #include "word.h"
 
 bool line__append (Line * line, Word * word, unsigned int ncols) {
-    bool fits = line->nchars + line->nspans + word->cap - 1 <= ncols;
+    bool fits = line->nchars + line->nspans + word->cap <= ncols;
     if (fits) {
         line->words[line->nwords] = word;
         line->nchars += word->cap - 1;
