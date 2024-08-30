@@ -1,7 +1,7 @@
 #include "files.h"
-#include <string.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <string.h>
 
 void close_files (Files * files) {
     {

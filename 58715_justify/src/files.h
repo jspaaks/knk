@@ -8,6 +8,7 @@ typedef struct {
         char filename[FILENAME_MAX];
         FILE * fp;
     } read;
+
     struct {
         char filename[FILENAME_MAX];
         FILE * fp;

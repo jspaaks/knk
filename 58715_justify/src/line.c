@@ -1,7 +1,7 @@
 #include "line.h"
 #include "word.h"
-#include <stdlib.h>
 #include <assert.h>
+#include <stdlib.h>
 
 bool line__append (Line * line, Word * word, unsigned int ncols) {
     bool fits = line->nchars + line->nspans + word->cap <= ncols;
@@ -53,7 +53,7 @@ void line__print (Line * line, FILE * fp, unsigned int ncols, bool justify) {
         fprintf(fp, "%s", line->words[i]->buf);
         if (justify) {
             for (unsigned int j = 0; j < spanwidth; ++j) {
-                fprintf(fp, "%c",  SPACE_TYPE_2);
+                fprintf(fp, "%c", SPACE_TYPE_2);
             }
             chance = ((float) nremaining) / (line->nspans - i);
             r = ((float) rand()) / RAND_MAX;

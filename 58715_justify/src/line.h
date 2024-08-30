@@ -10,7 +10,6 @@ typedef struct line {
     unsigned int nwords;
 } Line;
 
-
 bool line__append (Line *, Word *, unsigned int);
 void line__free_and_reset (Line *);
 void line__print (Line *, FILE *, unsigned int, bool);

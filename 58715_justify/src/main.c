@@ -1,11 +1,11 @@
 #include "files.h"
 #include "line.h"
 #include "word.h"
+#include <ctype.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
-#include <ctype.h>
 #include <time.h>
 
 void justify (Files *, unsigned int);
@@ -19,7 +19,8 @@ int main (int argc, char * argv[]) {
                 "Usage: %s -i INPUT_FILENAME -o OUTPUT_FILENAME -c COLUMN\n"
                 "    Read the text of INPUT_FILENAME, justify it to\n"
                 "    character column COLUMN, then write the result to\n"
-                "    OUTPUT_FILENAME.\n", argv[0]);
+                "    OUTPUT_FILENAME.\n",
+                argv[0]);
         exit(EXIT_FAILURE);
     }
     Files files = {};

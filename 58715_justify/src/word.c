@@ -1,17 +1,19 @@
 #include "word.h"
-#include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 static Word * word__create (size_t nbufcap);
 
 static Word * word__create (size_t nbufcap) {
     size_t nbufcapmax = 18;
     if (nbufcap > nbufcapmax) {
-        fprintf(stderr, " -- Requested buffer size exceeds maximum allowed value"
-                        " of %zu, words may appear split.\n", nbufcapmax);
+        fprintf(stderr,
+                " -- Requested buffer size exceeds maximum allowed value"
+                " of %zu, words may appear split.\n",
+                nbufcapmax);
         nbufcap = nbufcapmax;
     }
     char * buf = malloc(sizeof(char) * nbufcap);
@@ -94,7 +96,7 @@ Word * word__fread_into_buffer (FILE * fp, char * filename, bool * eof) {
     return word;
 }
 
-void word__free(Word * word) {
+void word__free (Word * word) {
     free(word->buf);
     free(word);
 }
