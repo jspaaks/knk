@@ -35,16 +35,19 @@ int main (int argc, char * argv[]) {
     }
     strncpy(files.read.filename, argv[2], FILENAME_MAX);
     strncpy(files.write.filename, argv[4], FILENAME_MAX);
-    open_files(&files);
 
     unsigned int ncols;
     int nread = sscanf(argv[6], " %u", &ncols);
     if (nread != 1) {
         fprintf(stderr, " -- Error reading COLUMN argument.\n");
-        close_files(&files);
+        exit(EXIT_FAILURE);
+    }
+    if (ncols < 20 || ncols > 150) {
+        fprintf(stderr, " -- Argument COLUMN must be in the range 20-150.\n");
         exit(EXIT_FAILURE);
     }
 
+    open_files(&files);
     justify(&files, ncols);
 
     close_files(&files);
@@ -54,15 +57,21 @@ int main (int argc, char * argv[]) {
 void justify (Files * files, unsigned int ncols) {
     Line line = {};
     bool eof = false;
-    while (!eof) {
-        Word * word = word__fread_into_buffer(files->read.fp, files->read.filename, &eof);
-        bool fits = line__append(&line, word, ncols);
-        if (!fits) {
-            line__print(&line, files->write.fp, ncols);
+    Word * word = nullptr;
+    bool fits;
+    while (true) {
+        word = word__fread_into_buffer(files->read.fp, files->read.filename, &eof);
+        if (eof) {
+            line__print(&line, files->write.fp, ncols, false);
             line__free_and_reset(&line);
-            line__append(&line, word, ncols);
+            break;
+        } else {
+            fits = line__append(&line, word, ncols);
+            if (!fits) {
+                line__print(&line, files->write.fp, ncols, true);
+                line__free_and_reset(&line);
+                line__append(&line, word, ncols);
+            }
         }
     }
-    // TODO deal with printing last line and/or last word
-    line__free_and_reset(&line);
 }

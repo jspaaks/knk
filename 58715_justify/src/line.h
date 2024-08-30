@@ -13,6 +13,6 @@ typedef struct line {
 
 bool line__append (Line *, Word *, unsigned int);
 void line__free_and_reset (Line *);
-void line__print (Line *, FILE *, unsigned int);
+void line__print (Line *, FILE *, unsigned int, bool);
 
 #endif

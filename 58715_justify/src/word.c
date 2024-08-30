@@ -8,6 +8,12 @@
 static Word * word__create (size_t nbufcap);
 
 static Word * word__create (size_t nbufcap) {
+    size_t nbufcapmax = 18;
+    if (nbufcap > nbufcapmax) {
+        fprintf(stderr, " -- Requested buffer size exceeds maximum allowed value"
+                        " of %zu, words may appear split.\n", nbufcapmax);
+        nbufcap = nbufcapmax;
+    }
     char * buf = malloc(sizeof(char) * nbufcap);
     if (buf == nullptr) {
         fprintf(stderr, " -- Error allocating memory for word buffer.\n");
