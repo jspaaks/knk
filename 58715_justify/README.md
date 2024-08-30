@@ -43,7 +43,7 @@ Should output something like:
 And the contents of `output.txt`:
 
 ```text
-$ cat output.txt                                                                                                                                                                                                                                                                                     
+$ cat output.txt
 In the  interview,  Harris  explained  how  her
 positions  on  issues  including  fracking  and
 border  security have  evolved since she  first
@@ -67,4 +67,3 @@ That  approach will soon face its biggest  test
 yet, with Harris and  Trump both preparing  for
 their September 10 debate on ABC.
 ```
-
