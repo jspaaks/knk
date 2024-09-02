@@ -10,7 +10,7 @@ cmake --build .
 cmake --install .
 ```
 
-# Prep
+## Prep
 
 ```
 $ echo -ne "sometext\n" > test.in
