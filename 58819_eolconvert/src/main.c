@@ -55,12 +55,6 @@ void convert_linux_to_windows (Files * files) {
         if (nread != 1 && feof(files->src.fp)) {
             break;
         }
-        int nwritten = fwrite(&byte, 1, 1, files->dst.fp);
-        if (nwritten != 1) {
-            fprintf(stderr, "Error writing data to file '%s': %s.\n", files->dst.filename, strerror(errno));
-            errno = 0;
-            exit(EXIT_FAILURE);
-        }
         if (byte == '\n') {
             int nwritten = fwrite(&carriage_return, 1, 1, files->dst.fp);
             if (nwritten != 1) {
@@ -68,6 +62,12 @@ void convert_linux_to_windows (Files * files) {
                 errno = 0;
                 exit(EXIT_FAILURE);
             }
+        }
+        int nwritten = fwrite(&byte, 1, 1, files->dst.fp);
+        if (nwritten != 1) {
+            fprintf(stderr, "Error writing data to file '%s': %s.\n", files->dst.filename, strerror(errno));
+            errno = 0;
+            exit(EXIT_FAILURE);
         }
     }
     fprintf(stdout, "Done.\n");
@@ -93,9 +93,13 @@ void convert_windows_to_linux (Files * files) {
             break;
         }
 
-        if (prevbyte == '\n' && thisbyte == '\r') {
-            prevbyte = thisbyte;
-            continue;
+        if (thisbyte == 0x1a) {
+            // Special rule on Windows, 0x1a equals EOF
+            break;
+        }
+
+        if (prevbyte == '\r' && thisbyte == '\n') {
+            fseek(files->dst.fp, -1, SEEK_CUR);
         }
 
         int nwritten = fwrite(&thisbyte, 1, 1, files->dst.fp);
