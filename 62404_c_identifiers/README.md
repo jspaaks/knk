@@ -23,6 +23,7 @@ string             is valid   is not valid
 ----------------   --------   ------------
 napples                x
 number_of_apples       x
+#apples                            x
 numberOfApples         x
 NumberOfApples         x
 _state                 x
