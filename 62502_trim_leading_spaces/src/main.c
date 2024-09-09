@@ -18,7 +18,7 @@ int main (int argc, char * argv[]) {
     }
 
     constexpr size_t cap = 4096;
-    char buf[cap];
+    char buf[cap] = {};
     char * status;
     size_t w;
     while (true) {
