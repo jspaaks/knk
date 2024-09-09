@@ -12,7 +12,7 @@ cmake --install .
 
 ## Prep
 
-(wrapped btw)
+(output wrapped btw)
 
 ```console
 $ cat ../input.txt
@@ -33,7 +33,7 @@ felis.
 Should output something like (again, wrapped):
 
 ```console
-$ ./dist/bin/capitalize <../input.txt                                                                                                             
+$ ./dist/bin/capitalize <../input.txt
 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Proin Vel
 Arcu Id Est Tempus Fermentum. Donec Sodales Vel Magna A Euismod.
 Maecenas At Leo Ac Justo Accumsan Eleifend. Quisque Vel Tempus Orci,
