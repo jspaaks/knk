@@ -2,7 +2,7 @@
 
 ## Build and install
 
-```shell
+```console
 mkdir build
 cd build
 cmake ..
