@@ -7,7 +7,11 @@ void show_usage (FILE * stream);
 
 void show_usage (FILE * stream) {
     char * exename = "quadratic";
-    fprintf(stream, "Usage: %s\n", exename);
+    fprintf(stream,
+            "Usage: %s\n"
+            "    Program that prompts the user for coefficients of a quadratic\n"
+            "    function ax^2 + bx + c = 0, then determines its root(s).\n",
+            exename);
 }
 
 int main (int argc, char * argv[]) {
