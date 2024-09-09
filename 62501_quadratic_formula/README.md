@@ -2,7 +2,7 @@
 
 ## Build and install
 
-```shell
+```console
 mkdir build
 cd build
 cmake ..
@@ -12,7 +12,7 @@ cmake --install .
 
 ## Run
 
-```shell
+```console
 $ ./dist/bin/quadratic --help                                                                                                                     
 Usage: quadratic
     Program that prompts the user for coefficients of a quadratic
