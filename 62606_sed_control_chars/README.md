@@ -26,7 +26,7 @@ Usage: showctrlchrs
    Copy STDIN to STDOUT while replacing any control
    characters except '\n' with '?'.
 
-$ ./dist/bin/showctrlchrs <../input.txt                                                                                                           
+$ ./dist/bin/showctrlchrs <../input.txt
 a?b?c
 d,e,f?
 ```
