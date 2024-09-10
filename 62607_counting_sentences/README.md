@@ -13,7 +13,7 @@ cmake --install .
 ## Prep
 
 ```console
-$ echo -n "Hello. How are you?                                                                                                                    
+$ echo -n "Hello. How are you?
 > I haven't seen you in forever! We should get together sometime!
 > -- Alright, gotta go.
 > Until next time." > ../input.txt
