@@ -24,7 +24,7 @@ int main (int argc, char * argv[]) {
     size_t nsentences = 0;
     bool cond1;
     bool cond2;
-    const char EOT = 4;
+    const char EOT = 4; // End of transmission
 
     while (true) {
         ch = fgetc(stdin);
