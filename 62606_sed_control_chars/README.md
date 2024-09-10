@@ -14,7 +14,7 @@ cmake --install .
 
 ```console
 $ echo -ne "a\tb\tc\nd,e,f\v\n" > ../input.txt
-$ xxd ../input.txt                                                                                                                                
+$ xxd ../input.txt
 00000000: 6109 6209 630a 642c 652c 660b 0a         a.b.c.d,e,f..
 ```
 
