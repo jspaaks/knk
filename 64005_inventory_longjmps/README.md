@@ -1,5 +1,7 @@
 # 64005_inventory_longjmps
 
+Or, a lesson in unwholly control flow.
+
 ## Build and install
 
 ```console
@@ -15,9 +17,3 @@ cmake --install .
 ```console
 ./dist/bin/inventory
 ```
-
-Should output something like:
-
-```console
-```
-

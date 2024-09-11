@@ -42,7 +42,6 @@ target_link_libraries(
 target_sources(
     tgt
     PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/src/inventory.c
         ${CMAKE_CURRENT_LIST_DIR}/src/main.c
         ${CMAKE_CURRENT_LIST_DIR}/src/readline.c
 )
