@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int max_int (...);
+int max_int (int, ...);
 void show_usage (FILE * stream);
 
 int main (int argc, char * argv[]) {
@@ -23,11 +23,13 @@ int main (int argc, char * argv[]) {
     return EXIT_SUCCESS;
 }
 
-int max_int (...) {
+int max_int (int first, ...) {
     va_list ap;
-    va_start(ap, n);
-    int largest = va_arg(ap, int);
-    int current = largest;
+    va_start(ap, first);
+
+    int current = first;
+    int largest = first;
+
     while (current != 0) {
         current = va_arg(ap, int);
         if (current > largest) {
