@@ -13,11 +13,11 @@ cmake --install .
 ## Run
 
 ```console
-./dist/bin/demo
-```
+$ ./dist/bin/demo --help
+Usage: demo
+   Demonstrate usage of atexit function.
 
-Should output something like:
-
-```console
+$ ./dist/bin/demo
+That's all, folks!
 ```
 
