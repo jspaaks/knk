@@ -2,6 +2,10 @@
 
 Programming exercises for KN King's book _C programming - a modern approach_.
 
+<div align="center">
+    <img src="images/book-front.webp" style="margin:50px" alt="front of the book"/>
+</div>
+
 ## Pre 359
 
 Compile `*.c` files with:
